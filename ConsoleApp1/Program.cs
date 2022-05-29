@@ -1,0 +1,22 @@
+﻿using System;
+using ConsoleApp1.Entity;
+using System.Collections.Generic;
+using ConsoleApp1.Services;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        private static object users;
+
+        //TODO: todo
+
+
+        static void Main(string[] args)
+        {
+            new Store(new User("Guest", "", role.GUEST.ToString())).run();
+        }
+
+       
+    }
+}
