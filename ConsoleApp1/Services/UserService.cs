@@ -20,9 +20,14 @@ namespace ConsoleApp1.Services
             // todo find User in collection users by userName and password
             // if find - return user
             // if not find - return null
-            
-            // delete
-            if (users != null) return users[0];
+
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (userName.Equals(users[i].getLogin()) && password.Equals(users[i].getPassword()))
+                {
+                    return (users[i]);
+                }
+            }
             return null;
         }
     }

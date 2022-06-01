@@ -16,11 +16,12 @@ namespace ConsoleApp1
             this.activeUser = activeUser;
         }
 
-        public void run() {
+        public void run()
+        {
             String s = "";
 
 
-            while(true)
+            while (true)
             {
                 Console.Write("Hello, ");
                 Console.WriteLine(this.activeUser.getLogin());
@@ -30,7 +31,7 @@ namespace ConsoleApp1
                 {
                     s = getScreen();
                 }
-                
+
                 // user account registration;
                 if (s.Equals("2") && activeUser.getRole().Equals(role.GUEST.ToString()))
                 {
@@ -48,7 +49,7 @@ namespace ConsoleApp1
 
                 s = "";
                 Console.Clear();
-            } 
+            }
         }
 
         private String getScreen()
@@ -110,18 +111,29 @@ namespace ConsoleApp1
                 Console.WriteLine("Incorrect login or password");
                 Console.ReadKey();
             }
-            else {
+            else
+            {
                 this.activeUser = user;
             }
         }
 
 
-        
-        private String userScreen() {
+
+        private String userScreen()
+        {
             // todo screen for registered user 
             Console.Clear();
             Console.WriteLine("Registered User screen");
+            Console.WriteLine("1. View the list of goods;");
+            Console.WriteLine("2. Search for goods by name;");
+            Console.WriteLine("3. Creating a new order;");
+            Console.WriteLine("4. Ordering or cancellation;");
+            Console.WriteLine("5. Review the history of orders and the status of their delivery;");
+            Console.WriteLine("6. Retting the status of the order _Received_;");
+            Console.WriteLine("7. Change of personal information;");
+            Console.WriteLine("8. Sign out of the account;");
             return Console.ReadLine();
+
         }
     }
 }
