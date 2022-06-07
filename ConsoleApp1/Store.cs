@@ -14,6 +14,8 @@ namespace ConsoleApp1
         public Store(User activeUser)
         {
             this.activeUser = activeUser;
+            Good good = new Good("milk", 20);
+            Good good1 = new Good("aplle", 15);
         }
 
         public void run()
@@ -135,5 +137,8 @@ namespace ConsoleApp1
             return Console.ReadLine();
 
         }
+
+
+
     }
 }
