@@ -10,12 +10,17 @@ namespace ConsoleApp1
     {
         private User activeUser;
         UserService userService = new UserService();
+        StoreService storeService = new StoreService();
 
         public Store(User activeUser)
         {
             this.activeUser = activeUser;
-            Good good = new Good("milk", 20);
-            Good good1 = new Good("aplle", 15);
+
+        }
+
+        public void test() { 
+        
+        
         }
 
         public void run()
@@ -33,18 +38,52 @@ namespace ConsoleApp1
                 {
                     s = getScreen();
                 }
-
+                
+                /*
+                 * ----- GUEST menu activity --------------
+                */
+                if (s.Equals("1") && activeUser.getRole().Equals(role.GUEST.ToString()))
+                {
+                    searchForGoodsByName();
+                }
                 // user account registration;
-                if (s.Equals("2") && activeUser.getRole().Equals(role.GUEST.ToString()))
+                else if (s.Equals("2") && activeUser.getRole().Equals(role.GUEST.ToString()))
                 {
                     User user = registration();
                     // users.Add(user);
                 }
-                if (s.Equals("3") && activeUser.getRole().Equals(role.GUEST.ToString()))
+                else if (s.Equals("3") && activeUser.getRole().Equals(role.GUEST.ToString()))
                 {
                     login();
                 }
-                if (s.Equals("0"))
+                /*
+                 * ---- END GUEST menu activity ------
+                */
+
+
+                /*
+                 *  ---- REGISTERED_USER menu activity ------
+                */
+                if (s.Equals("1") && activeUser.getRole().Equals(role.REGISTERED_USER.ToString()))
+                {
+                    viewTheListOfGoods();
+                }
+                else if (s.Equals("2") && activeUser.getRole().Equals(role.REGISTERED_USER.ToString()))
+                {
+                    searchForGoodsByName();
+                }
+                /*else if (s.Equals("3") && activeUser.getRole().Equals(role.REGISTERED_USER.ToString()))
+                {
+
+                }
+                */
+                    // todo REGISTERED_USER menu
+                    // else if
+
+                    /*
+                     * ---- END REGISTERED_USER menu activity ------ 
+                    */
+                    if (s.Equals("0"))
                 {
                     Environment.Exit(0);
                 }
@@ -80,6 +119,23 @@ namespace ConsoleApp1
             Console.WriteLine("0. Exit from store");
             return Console.ReadLine();
         }
+
+        private void viewTheListOfGoods()
+        {
+            Console.WriteLine("This is all goods!");
+            storeService.getAllGoods();
+        }
+
+        private void searchForGoodsByName()
+        {
+            Console.Clear();
+            Console.WriteLine("Write the name of good!");
+            string name = Console.ReadLine();
+            storeService.getGoodByName(name);
+
+            Console.ReadKey();
+        }
+
 
         private User registration()
         {
@@ -119,8 +175,6 @@ namespace ConsoleApp1
             }
         }
 
-
-
         private String userScreen()
         {
             // todo screen for registered user 
@@ -137,8 +191,5 @@ namespace ConsoleApp1
             return Console.ReadLine();
 
         }
-
-
-
     }
 }

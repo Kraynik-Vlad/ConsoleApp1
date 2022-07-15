@@ -14,7 +14,12 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            new Store(new User("Guest", "", role.GUEST.ToString())).run();
+            //StoreService store = new StoreService();
+            //store.getAllGoods();
+
+            
+            
+             new Store(new User("Guest", "", role.GUEST.ToString())).run();
         }
 
        

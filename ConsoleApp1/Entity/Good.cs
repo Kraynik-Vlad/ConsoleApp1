@@ -9,6 +9,16 @@ namespace ConsoleApp1.Entity
         private string name;
         private int amountInStorage;
 
+        public string getName()
+        {
+            return name;
+        }
+
+        public int getAmointInStorage()
+        {
+            return amountInStorage;
+        }
+
         public Good(string name, int amountInStorage)
         {
             this.name = name;
