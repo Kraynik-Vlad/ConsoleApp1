@@ -35,16 +35,21 @@ namespace ConsoleApp1.Services
 
         public void getAllGoods()
         {
+            Console.WriteLine("Name" + "  |  " + "AmointInStorage");
             for (int i = 0; i < goods.Count; i++)
             {
-                Console.WriteLine(goods[i].getName());
-                Console.WriteLine(goods[i].getAmointInStorage());
-            }
+                //Console.WriteLine("{0}\t{1}\", goods[i].getName(), getAmointInStorage()");
 
+
+               Console.WriteLine(goods[i].getName() + "  |  " + goods[i].getAmointInStorage());
+                //Console.WriteLine(goods[i].getAmointInStorage());
+                
+            }
+            //Console.ReadKey();
             // Два Консоль лог переделать в один который еще делает таблицу. гугли как рамки рисовать баклан
         }
 
-        public void getGoodByName(string name)
+        public void PrintGoodByName(string name)
         {
             bool n = false;
 
@@ -66,6 +71,29 @@ namespace ConsoleApp1.Services
             // которое совпадает с названием в коллекции
             // если товар не найден - пишем что такого товара нету
         }
+        public bool isGoodIsPresent(string name)
+        {
 
+            for (int i = 0; i < goods.Count; i++)
+            {
+                if (name.Equals(goods[i].getName()))
+                {
+                    return true;
+                }
+            }
+            return false; 
+        }
+
+        public Good GetGoodByName(string name)
+        {
+            for (int i = 0; i < goods.Count; i++)
+            {
+                if (name.Equals(goods[i].getName()))
+                {
+                    return goods[i];
+                }
+            }
+            return null;
+        }
     }
 }

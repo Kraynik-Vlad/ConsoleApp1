@@ -19,12 +19,13 @@ namespace ConsoleApp1.Entity
             return amountInStorage;
         }
 
+
         public Good(string name, int amountInStorage)
         {
             this.name = name;
             this.amountInStorage = amountInStorage;
         }
-
+  
         public void decreaseAmount(int amountInOrder)
         {
             this.amountInStorage = this.amountInStorage - amountInOrder;

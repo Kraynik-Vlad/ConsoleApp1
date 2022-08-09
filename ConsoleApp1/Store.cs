@@ -11,6 +11,8 @@ namespace ConsoleApp1
         private User activeUser;
         UserService userService = new UserService();
         StoreService storeService = new StoreService();
+        Order order = new Order();
+
 
         public Store(User activeUser)
         {
@@ -72,18 +74,29 @@ namespace ConsoleApp1
                 {
                     searchForGoodsByName();
                 }
+                else if (s.Equals("3") && activeUser.getRole().Equals(role.REGISTERED_USER.ToString()))
+                {
+                    Order order = new Order();
+                    order = CreatingANewOrder(order);
+                    if (order.getGoods().Count > 0)
+                    {
+                        activeUser.addOrder(order);
+                    }
+                   
+
+                }
                 /*else if (s.Equals("3") && activeUser.getRole().Equals(role.REGISTERED_USER.ToString()))
                 {
 
                 }
                 */
-                    // todo REGISTERED_USER menu
-                    // else if
+                // todo REGISTERED_USER menu
+                // else if
 
-                    /*
-                     * ---- END REGISTERED_USER menu activity ------ 
-                    */
-                    if (s.Equals("0"))
+                /*
+                 * ---- END REGISTERED_USER menu activity ------ 
+                */
+                if (s.Equals("0"))
                 {
                     Environment.Exit(0);
                 }
@@ -131,9 +144,55 @@ namespace ConsoleApp1
             Console.Clear();
             Console.WriteLine("Write the name of good!");
             string name = Console.ReadLine();
-            storeService.getGoodByName(name);
+            storeService.PrintGoodByName(name);
 
             Console.ReadKey();
+        }
+        private Order CreatingANewOrder(Order order)
+        {
+            
+            Console.Clear();
+            Console.WriteLine("What do you want to buy?");
+            Console.WriteLine("-----------------");
+            viewTheListOfGoods();
+            Console.WriteLine("------");
+            Console.WriteLine("If you what to exit, press 0 ");
+            Console.WriteLine("--");
+            Console.WriteLine("Wtite your choice here: ");
+            //Console.ReadLine();
+            string name = Console.ReadLine();
+            if (name.Equals("0"))
+            {
+                return order;
+            }
+            Good good = storeService.GetGoodByName(name);
+            if (good != null) {
+                Console.Write("Please enter amount: ");
+                int amountForOrder = Convert.ToInt32(Console.ReadLine());
+                if (amountForOrder <= good.getAmointInStorage())
+                {
+                    GoodForOrder goodForOrder = new GoodForOrder(name, amountForOrder);
+                    order.addGood(goodForOrder);
+                    Console.WriteLine("Good was add in your Order!");
+                    Console.ReadKey();
+                    CreatingANewOrder(order);
+                }
+                else
+                {
+                    Console.WriteLine("We have not enough Goods!");
+                    Console.ReadKey();
+                    CreatingANewOrder(order);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Good was not found!");
+                Console.ReadKey();
+                CreatingANewOrder(order);
+            }
+
+            return order;
+            
         }
 
 

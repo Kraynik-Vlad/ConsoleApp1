@@ -24,4 +24,12 @@ namespace ConsoleApp1
 
        
     }
+
+/*public void addOrder(Order order)
+{
+    this.order.Add(order);
 }
+*/
+}
+
+
