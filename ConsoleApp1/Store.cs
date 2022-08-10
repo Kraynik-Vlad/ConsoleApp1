@@ -54,9 +54,12 @@ namespace ConsoleApp1
                     User user = registration();
                     // users.Add(user);
                 }
+
                 else if (s.Equals("3") && activeUser.getRole().Equals(role.GUEST.ToString()))
                 {
                     login();
+                
+                            
                 }
                 /*
                  * ---- END GUEST menu activity ------
@@ -85,6 +88,7 @@ namespace ConsoleApp1
                    
 
                 }
+                
                 /*else if (s.Equals("3") && activeUser.getRole().Equals(role.REGISTERED_USER.ToString()))
                 {
 
@@ -231,6 +235,7 @@ namespace ConsoleApp1
             else
             {
                 this.activeUser = user;
+                run();
             }
         }
 
