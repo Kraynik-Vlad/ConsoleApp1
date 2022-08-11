@@ -57,9 +57,7 @@ namespace ConsoleApp1
 
                 else if (s.Equals("3") && activeUser.getRole().Equals(role.GUEST.ToString()))
                 {
-                    login();
-                
-                            
+                    login();    
                 }
                 /*
                  * ---- END GUEST menu activity ------
@@ -69,7 +67,7 @@ namespace ConsoleApp1
                 /*
                  *  ---- REGISTERED_USER menu activity ------
                 */
-                if (s.Equals("1") && activeUser.getRole().Equals(role.REGISTERED_USER.ToString()))
+                else if (s.Equals("1") && activeUser.getRole().Equals(role.REGISTERED_USER.ToString()))
                 {
                     viewTheListOfGoods();
                 }
@@ -86,7 +84,6 @@ namespace ConsoleApp1
                         activeUser.addOrder(order);
                     }
                    
-
                 }
                 
                 /*else if (s.Equals("3") && activeUser.getRole().Equals(role.REGISTERED_USER.ToString()))
@@ -235,7 +232,7 @@ namespace ConsoleApp1
             else
             {
                 this.activeUser = user;
-                run();
+                
             }
         }
 
